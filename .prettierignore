@@ -1,0 +1,7 @@
+# package
+/**/package.json
+/**/package-lock.json
+
+# editors
+/.vscode
+/.idea
