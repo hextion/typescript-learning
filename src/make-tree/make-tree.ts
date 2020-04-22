@@ -7,9 +7,9 @@ interface Options<T> {
   parentKeySelector(item: T): string | number | null;
 }
 
-export function makeTree<T>(arr: Array<T>, options: Options<T>): Array<T & Parental<T>> {
+export function makeTree<T>(source: Array<T>, options: Options<T>): Array<T & Parental<T>> {
   const { keySelector, parentKeySelector } = options;
-  const shallow = arr.map((item) => ({ ...item }));
+  const shallow = source.map((item) => ({ ...item }));
   return shallow
     .map((item) => {
       const key = keySelector(item);
