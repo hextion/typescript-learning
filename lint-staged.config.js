@@ -10,6 +10,6 @@ const eslint = 'eslint --max-warnings 0';
 const run = (...commands) => commands;
 
 module.exports = {
-  '*.{js,json,md}': run(prettier),
+  '*.{js,json,md,yml}': run(prettier),
   '*.ts': run(prettier, eslint),
 };
