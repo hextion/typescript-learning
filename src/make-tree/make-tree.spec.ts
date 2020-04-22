@@ -7,35 +7,33 @@ interface Node {
 
 describe('makeTree', () => {
   it('should return tree', () => {
-    describe('makeTree', () => {
-      expect(
-        makeTree<Node>(
-          [
-            { key: 1, parentKey: null },
-            { key: 2, parentKey: 1 },
-          ],
-          {
-            keySelector(item) {
-              return item.key;
-            },
-            parentKeySelector(item) {
-              return item.parentKey;
-            },
-          }
-        )
-      ).toMatchObject([
+    expect(
+      makeTree<Node>(
+        [
+          { key: 1, parentKey: null },
+          { key: 2, parentKey: 1 },
+        ],
         {
-          key: 1,
-          parentKey: null,
-          children: [
-            {
-              key: 2,
-              parentKey: 1,
-              children: null,
-            },
-          ],
-        },
-      ]);
-    });
+          keySelector(item) {
+            return item.key;
+          },
+          parentKeySelector(item) {
+            return item.parentKey;
+          },
+        }
+      )
+    ).toMatchObject([
+      {
+        key: 1,
+        parentKey: null,
+        children: [
+          {
+            key: 2,
+            parentKey: 1,
+            children: null,
+          },
+        ],
+      },
+    ]);
   });
 });
