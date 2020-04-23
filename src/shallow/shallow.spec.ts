@@ -6,6 +6,6 @@ describe("shallow", () => {
     const copy = shallow(source);
     expect(copy).toMatchObject(source);
     expect(copy).not.toBe(source);
-    expect(source.b).toBe(copy.b);
+    expect(copy.b).toBe(source.b);
   });
 });
