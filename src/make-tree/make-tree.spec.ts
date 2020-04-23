@@ -22,7 +22,7 @@ describe("makeTree", () => {
           },
         }
       )
-    ).toMatchObject([
+    ).toDeepEqual([
       {
         key: 1,
         parentKey: null,
