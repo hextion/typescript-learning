@@ -1,5 +1,5 @@
-const prettier = 'prettier --list-different';
-const eslint = 'eslint --max-warnings 0';
+const prettier = "prettier --list-different";
+const eslint = "eslint --max-warnings 0";
 
 /**
  * Return array of passed commands
@@ -10,6 +10,6 @@ const eslint = 'eslint --max-warnings 0';
 const run = (...commands) => commands;
 
 module.exports = {
-  '*.{js,json,md,yml}': run(prettier),
-  '*.ts': run(prettier, eslint),
+  "*.{js,json,md,yml}": run(prettier),
+  "*.ts": run(prettier, eslint),
 };

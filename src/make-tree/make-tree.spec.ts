@@ -1,12 +1,12 @@
-import { makeTree } from './make-tree';
+import { makeTree } from "./make-tree";
 
 interface Node {
   key: string | number;
   parentKey: string | number | null;
 }
 
-describe('makeTree', () => {
-  it('should return tree', () => {
+describe("makeTree", () => {
+  it("should return tree", () => {
     expect(
       makeTree<Node>(
         [

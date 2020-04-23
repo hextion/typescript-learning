@@ -1,11 +1,11 @@
 module.exports = {
   presets: [
-    '@babel/preset-typescript',
+    "@babel/preset-typescript",
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
         targets: {
-          browsers: ['ie >= 11'],
+          browsers: ["ie >= 11"],
         },
       },
     ],
