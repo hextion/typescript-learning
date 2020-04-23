@@ -10,6 +10,7 @@
     "lint:fix": "npm run lint -- --fix",
     "pretest": "npm run check-types",
     "test": "jest",
+    "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Salavat Gizatov <100ishundred@gmail.com> (https://github.com/hextion)",
