@@ -17,7 +17,7 @@ export function makeTree<T extends object>(source: Array<T>, options: Options<T>
       const key = keySelector(item);
       let children: Array<T> | null = copy.filter((item) => parentKeySelector(item) === key);
       children = children.length > 0 ? children : null;
-      return Object.assign(item, { children }) as T & Parental<T>;
+      return Object.assign(item, { children } as Parental<T>);
     })
     .filter((item) => parentKeySelector(item) === null);
 }
