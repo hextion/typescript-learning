@@ -9,13 +9,13 @@ export interface Options<T> {
   parentKeySelector(item: T): string | number | null;
 }
 
-export function makeTree<T extends object>(source: Array<T>, options: Options<T>): Array<T & Parental<T>> {
+export function makeTree<T extends object>(source: T[], options: Options<T>): Array<T & Parental<T>> {
   const { keySelector, parentKeySelector } = options;
   const copy = source.map((item) => shallow(item));
   return copy
     .map((item) => {
       const key = keySelector(item);
-      let children: Array<T> | null = copy.filter((item) => parentKeySelector(item) === key);
+      let children: T[] | null = copy.filter((item) => parentKeySelector(item) === key);
       children = children.length > 0 ? children : null;
       return Object.assign(item, { children } as Parental<T>);
     })
