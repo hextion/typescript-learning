@@ -14,5 +14,14 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint"],
-  "root": true
+  "root": true,
+  "rules": {
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        "default": "generic",
+        "readonly": "generic"
+      }
+    ]
+  }
 }
