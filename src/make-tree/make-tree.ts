@@ -4,7 +4,7 @@ interface Parental<T> {
   children: Array<T & Parental<T>> | null;
 }
 
-export interface Options<T> {
+interface Options<T> {
   keySelector(item: T): string | number;
   parentKeySelector(item: T): string | number | null;
 }
