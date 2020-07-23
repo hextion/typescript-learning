@@ -1,14 +1,10 @@
-import { makeTree } from "./make-tree";
-
-interface Node {
-  key: string | number;
-  parentKey: string | number | null;
-}
+// FIXME src -> lib
+const { makeTree } = require("../src/make-tree");
 
 describe("makeTree", () => {
   it("should return tree", () => {
     expect(
-      makeTree<Node>(
+      makeTree(
         [
           { key: 1, parentKey: null },
           { key: 2, parentKey: 1 },

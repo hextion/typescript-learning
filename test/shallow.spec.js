@@ -1,4 +1,5 @@
-import { shallow } from "./shallow";
+// FIXME src -> lib
+const { shallow } = require("../src/shallow");
 
 describe("shallow", () => {
   it("should return shallow copy", () => {

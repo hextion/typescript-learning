@@ -1,4 +1,4 @@
-import { shallow } from "../shallow";
+import { shallow } from "./shallow";
 
 interface Parental<T> {
   children: Array<T & Parental<T>> | null;
