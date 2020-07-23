@@ -4,9 +4,11 @@ interface Parental<T> {
   children: Array<T & Parental<T>> | null;
 }
 
+type Key = string | number;
+
 interface Options<T> {
-  keySelector(item: T): string | number;
-  parentKeySelector(item: T): string | number | null;
+  keySelector(item: T): Key;
+  parentKeySelector(item: T): Key | null;
 }
 
 export function makeTree<T extends object>(source: Array<T>, options: Options<T>): Array<T & Parental<T>> {
