@@ -1,5 +1,5 @@
 // FIXME src -> lib
-const { shallow } = require("../src/shallow");
+const { shallow } = require("../src");
 
 describe("shallow", () => {
   it("should return shallow copy", () => {
