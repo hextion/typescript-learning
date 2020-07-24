@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "lib": ["esnext", "dom"],
     "sourceMap": true,
     "rootDir": "./src",
