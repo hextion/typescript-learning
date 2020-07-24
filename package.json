@@ -6,7 +6,7 @@
     "check-types": "tsc --noEmit",
     "format": "prettier --list-different \"**/*.{js,ts,md,json,yml}\"",
     "format:fix": "npm run format -- --write",
-    "lint": "eslint --ext .ts --max-warnings 0 src",
+    "lint": "eslint --ext .js,.ts --max-warnings 0 src test",
     "lint:fix": "npm run lint -- --fix",
     "pretest": "npm run check-types",
     "test": "jest",
