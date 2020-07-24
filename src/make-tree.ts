@@ -11,10 +11,12 @@ interface Options<T> {
   parentKeySelector(item: T): Key | null;
 }
 
-export function makeTree<T extends object>(source: Array<T>, options: Options<T>): Array<T & Parental<T>> {
-  const { keySelector, parentKeySelector } = options;
-  const copy = source.map((item) => shallow(item));
-  return copy
+export function makeTree<T extends object>(
+  source: Array<T>,
+  { keySelector, parentKeySelector }: Options<T>
+): Array<T & Parental<T>> {
+  return source
+    .map(shallow)
     .map((item, _, arr) => {
       const key = keySelector(item);
       const children = arr.filter((item) => parentKeySelector(item) === key);
