@@ -1,5 +1,6 @@
 {
   "extends": ["eslint:recommended", "prettier", "plugin:jest/recommended", "plugin:jest/style"],
+  "root": true,
   "overrides": [
     {
       "files": ["*.js"],
@@ -34,6 +35,5 @@
         "@typescript-eslint/method-signature-style": ["error", "method"]
       }
     }
-  ],
-  "root": true
+  ]
 }
