@@ -11,7 +11,7 @@ interface Options<T> {
   parentKeySelector(item: T): Key | null;
 }
 
-export function makeTree<T extends object>(
+export function makeTree<T extends Record<string, unknown>>(
   source: Array<T>,
   { keySelector, parentKeySelector }: Options<T>
 ): Array<T & Parental<T>> {
