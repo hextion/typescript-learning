@@ -8,3 +8,8 @@
 
 # coverage
 /coverage
+
+# dist
+es
+lib
+types
