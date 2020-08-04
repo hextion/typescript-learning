@@ -12,8 +12,7 @@
     "format:fix": "npm run format -- --write",
     "lint": "eslint --ext .js,.ts --max-warnings 0 src test",
     "lint:fix": "npm run lint -- --fix",
-    "prebuild": "npm run check-types",
-    "pretest": "npm run check-types",
+    "pretest": "npm run check-types && npm run build",
     "test": "jest",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"

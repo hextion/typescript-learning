@@ -1,5 +1,4 @@
-// FIXME src -> lib
-const { makeTree } = require("../src");
+const { makeTree } = require("../");
 
 describe("makeTree", () => {
   it("should return tree", () => {
