@@ -8,10 +8,12 @@
     "build-es": "tsc --project tsconfig.json",
     "build-types": "tsc --emitDeclarationOnly --declaration --declarationMap --declarationDir types",
     "check-types": "tsc --noEmit",
+    "clear-build": "rimraf es lib types",
     "format": "prettier --list-different \"**/*.{js,ts,md,json,yml}\"",
     "format-fix": "npm run format -- --write",
     "lint": "eslint --ext .js,.ts --max-warnings 0 src test",
     "lint-fix": "npm run lint -- --fix",
+    "prebuild": "npm run clear-build",
     "pretest": "npm run check-types && npm run build",
     "test": "jest",
     "test-coverage": "npm run test -- --coverage",
@@ -39,6 +41,7 @@
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
     "prettier": "2.0.5",
+    "rimraf": "^3.0.2",
     "typescript": "^3.9.6"
   }
 }
