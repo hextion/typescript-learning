@@ -19,8 +19,8 @@ export function makeTree<T extends Record<string, unknown>>(
     .map(shallow)
     .map((item, _, arr) => {
       const key = keySelector(item);
-      const children = arr.filter((item) => parentKeySelector(item) === key);
+      const children = arr.filter((item) => Object.is(parentKeySelector(item), key));
       return Object.assign(item, { children: children.length > 0 ? children : null } as Parental<T>);
     })
-    .filter((item) => parentKeySelector(item) === null);
+    .filter((item) => Object.is(parentKeySelector(item), null));
 }
