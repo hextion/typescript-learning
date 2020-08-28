@@ -1,8 +1,8 @@
 import { shallow } from "./shallow";
 
-interface Parental<T> {
-  children: Array<T & Parental<T>> | null;
-}
+export type Parental<T> = T & {
+  children: Array<Parental<T>> | null;
+};
 
 type Key = string | number;
 
@@ -14,13 +14,13 @@ interface Options<T> {
 export function makeTree<T extends Record<string, unknown>>(
   source: Array<T>,
   { keySelector, parentKeySelector }: Options<T>
-): Array<T & Parental<T>> {
+): Array<Parental<T>> {
   return source
     .map(shallow)
     .map((item, _, arr) => {
       const key = keySelector(item);
-      const children = arr.filter((item) => Object.is(parentKeySelector(item), key));
-      return Object.assign(item, { children: children.length > 0 ? children : null } as Parental<T>);
+      const children = arr.filter((item) => Object.is(parentKeySelector(item), key)) as Array<Parental<T>>;
+      return Object.assign(item, { children: children.length > 0 ? children : null });
     })
     .filter((item) => Object.is(parentKeySelector(item), null));
 }
