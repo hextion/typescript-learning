@@ -1,6 +1,6 @@
 import { shallow } from "./shallow";
 
-export type Parental<V> = V & {
+export type Parental<V extends object> = V & {
   children: Array<Parental<V>> | null;
 };
 
@@ -9,8 +9,7 @@ interface Options<K, V> {
   parentKeySelector(item: V): K | null;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function makeTree<K, V extends Record<string, any>>(
+export function makeTree<K, V extends object>(
   source: Array<V>,
   { keySelector, parentKeySelector }: Options<K, V>
 ): Array<Parental<V>> {
