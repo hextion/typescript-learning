@@ -11,7 +11,8 @@ interface Options<T> {
   parentKeySelector(item: T): Key | null;
 }
 
-export function makeTree<T extends Record<string, unknown>>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function makeTree<T extends Record<string, any>>(
   source: Array<T>,
   { keySelector, parentKeySelector }: Options<T>
 ): Array<Parental<T>> {
