@@ -4,17 +4,15 @@ export type Parental<T> = T & {
   children: Array<Parental<T>> | null;
 };
 
-type Key = string | number;
-
-interface Options<T> {
-  keySelector(item: T): Key;
-  parentKeySelector(item: T): Key | null;
+interface Options<K, T> {
+  keySelector(item: T): K;
+  parentKeySelector(item: T): K | null;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function makeTree<T extends Record<string, any>>(
+export function makeTree<K, T extends Record<string, any>>(
   source: Array<T>,
-  { keySelector, parentKeySelector }: Options<T>
+  { keySelector, parentKeySelector }: Options<K, T>
 ): Array<Parental<T>> {
   return source
     .map(shallow)
