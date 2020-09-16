@@ -1,24 +1,26 @@
-import { shallow } from "./shallow";
-
-export type Parental<V extends object> = V & {
-  children: Array<Parental<V>> | null;
-};
+export interface Parental<T> {
+  value: T;
+  children?: Array<Parental<T>>;
+}
 
 interface Options<K, V> {
   keySelector(item: V): K;
   parentKeySelector(item: V): K | null;
 }
 
-export function makeTree<K, V extends object>(
+export function makeTree<K, V extends Record<string, unknown>>(
   source: Array<V>,
   { keySelector, parentKeySelector }: Options<K, V>
 ): Array<Parental<V>> {
   return source
-    .map(shallow)
-    .map((item, _, arr) => {
-      const key = keySelector(item);
-      const children = arr.filter((item) => Object.is(parentKeySelector(item), key)) as Array<Parental<V>>;
-      return Object.assign(item, { children: children.length > 0 ? children : null });
+    .map((item) => ({ value: item } as Parental<typeof item>))
+    .map((node, _, arr) => {
+      const key = keySelector(node.value);
+      const children = arr.filter((node) => Object.is(parentKeySelector(node.value), key));
+      if (children.length > 0) {
+        return Object.assign(node, { children });
+      }
+      return node;
     })
-    .filter((item) => Object.is(parentKeySelector(item), null));
+    .filter(({ value }) => Object.is(parentKeySelector(value), null));
 }
