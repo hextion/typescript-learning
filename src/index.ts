@@ -1,1 +1,1 @@
-export { makeTree } from "./make-tree";
+export * from "./make-tree";

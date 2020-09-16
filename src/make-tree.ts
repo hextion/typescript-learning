@@ -3,7 +3,7 @@ export interface Parental<T> {
   children?: Array<Parental<T>>;
 }
 
-interface Options<K, V> {
+export interface Options<K, V> {
   keySelector(item: V): K;
   parentKeySelector(item: V): K | null;
 }
