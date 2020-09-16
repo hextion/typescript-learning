@@ -1,39 +1,27 @@
 {
-  "extends": ["eslint:recommended", "prettier", "plugin:jest/recommended", "plugin:jest/style"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "jest"],
   "root": true,
-  "overrides": [
-    {
-      "files": ["*.js"],
-      "env": {
-        "node": true
-      },
-      "parserOptions": {
-        "ecmaVersion": 2018
+  "rules": {
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        "default": "generic",
+        "readonly": "generic"
       }
-    },
-    {
-      "files": ["*.ts"],
-      "extends": [
-        "prettier/@typescript-eslint",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-      ],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
-      "plugins": ["@typescript-eslint"],
-      "rules": {
-        "@typescript-eslint/array-type": [
-          "error",
-          {
-            "default": "generic",
-            "readonly": "generic"
-          }
-        ],
-        "@typescript-eslint/method-signature-style": ["error", "method"]
-      }
-    }
-  ]
+    ],
+    "@typescript-eslint/method-signature-style": ["error", "method"]
+  }
 }
