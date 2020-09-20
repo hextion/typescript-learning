@@ -23,5 +23,13 @@
       }
     ],
     "@typescript-eslint/method-signature-style": ["error", "method"]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.spec.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.test.json"
+      }
+    }
+  ]
 }
