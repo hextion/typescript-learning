@@ -11,5 +11,5 @@ const run = (...commands) => commands;
 
 module.exports = {
   "*.{js,json,md,yml}": run(prettier),
-  "*.{j,t}s": run(prettier, eslint),
+  "*.ts": run(prettier, eslint),
 };

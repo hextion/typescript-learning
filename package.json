@@ -11,7 +11,7 @@
     "clear-build": "rimraf es lib types",
     "format": "prettier --list-different \"**/*.{js,ts,md,json,yml}\"",
     "format-fix": "npm run format -- --write",
-    "lint": "eslint --ext .js,.ts --max-warnings 0 src test",
+    "lint": "eslint --ext .ts --max-warnings 0 src test",
     "lint-fix": "npm run lint -- --fix",
     "prebuild": "npm run clear-build",
     "pretest": "npm run check-types && npm run build",
