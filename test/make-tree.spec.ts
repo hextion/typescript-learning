@@ -1,23 +1,18 @@
-import { makeTree } from "../";
+import { makeTree } from "../src";
 
 describe("makeTree", () => {
   it("should return tree", () => {
-    expect(
-      makeTree(
-        [
-          { key: 1, parentKey: null },
-          { key: 2, parentKey: 1 },
-        ],
-        {
-          keySelector(item) {
-            return item.key;
-          },
-          parentKeySelector(item) {
-            return item.parentKey;
-          },
-        }
-      )
-    ).toMatchObject([
+    const tree = makeTree(
+      [
+        { key: 1, parentKey: null },
+        { key: 2, parentKey: 1 },
+      ],
+      {
+        keySelector: (item) => item.key,
+        parentKeySelector: (item) => item.parentKey,
+      }
+    );
+    expect(tree).toMatchObject([
       {
         value: {
           key: 1,
