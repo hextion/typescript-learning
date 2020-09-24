@@ -17,10 +17,7 @@ export function makeTree<K, V extends Record<string, unknown>>(
     .map((node, _, arr) => {
       const key = keySelector(node.value);
       const children = arr.filter((node) => Object.is(parentKeySelector(node.value), key));
-      if (children.length > 0) {
-        return Object.assign(node, { children });
-      }
-      return node;
+      return children.length > 0 ? Object.assign(node, { children }) : node;
     })
     .filter(({ value }) => Object.is(parentKeySelector(value), null));
 }
