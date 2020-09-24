@@ -6,7 +6,7 @@
     "build": "npm run build-cjs && npm run build-es && npm run build-types",
     "build-cjs": "tsc --project tsconfig.json --module commonjs --outDir lib",
     "build-es": "tsc --project tsconfig.json",
-    "build-types": "tsc --emitDeclarationOnly --declaration --declarationMap --declarationDir types",
+    "build-types": "tsc --project tsconfig.json --emitDeclarationOnly --declaration --declarationMap --declarationDir types",
     "check-types": "tsc --project tsconfig.json --noEmit",
     "clear-build": "rimraf es lib types",
     "format": "prettier --list-different \"**/*.{js,ts,md,json,yml}\"",
