@@ -7,7 +7,7 @@
     "build-cjs": "tsc --project tsconfig.json --module commonjs --outDir lib",
     "build-es": "tsc --project tsconfig.json",
     "build-types": "tsc --emitDeclarationOnly --declaration --declarationMap --declarationDir types",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --project tsconfig.json --noEmit",
     "clear-build": "rimraf es lib types",
     "format": "prettier --list-different \"**/*.{js,ts,md,json,yml}\"",
     "format-fix": "npm run format -- --write",
