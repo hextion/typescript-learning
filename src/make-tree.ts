@@ -5,7 +5,7 @@ export interface Parental<T> {
 
 export interface Options<K, V> {
   keySelector(item: V): K;
-  parentKeySelector(item: V): K | null;
+  parentKeySelector(item: V): K;
 }
 
 export function makeTree<K, V extends Record<string, unknown>>(
@@ -13,7 +13,7 @@ export function makeTree<K, V extends Record<string, unknown>>(
   { keySelector, parentKeySelector }: Options<K, V>
 ): Array<Parental<V>> {
   return source
-    .map((item) => ({ value: item } as Parental<typeof item>))
+    .map((item) => ({ value: item }))
     .map((node, _, arr) => {
       const key = keySelector(node.value);
       const children = arr.filter((node) => Object.is(parentKeySelector(node.value), key));
