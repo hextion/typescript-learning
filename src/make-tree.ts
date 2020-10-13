@@ -16,7 +16,8 @@ export interface Options<K, V extends BaseNode> {
 
 export function makeTree<K, V extends BaseNode>(
   source: Array<V>,
-  { nodeKeySelector, parentNodeKeySelector }: Options<K, V>
+  { nodeKeySelector, parentNodeKeySelector }: Options<K, V>,
+  withParentNodeKey: ReturnType<typeof parentNodeKeySelector>
 ): Array<Parental<V>> {
   return source
     .map((item) => ({ value: item }))
@@ -25,5 +26,5 @@ export function makeTree<K, V extends BaseNode>(
       const children = arr.filter((node) => Object.is(parentNodeKeySelector(node.value), key));
       return children.length > 0 ? Object.assign(node, { children }) : node;
     })
-    .filter(({ value }) => Object.is(parentNodeKeySelector(value), null));
+    .filter(({ value }) => Object.is(parentNodeKeySelector(value), withParentNodeKey));
 }
