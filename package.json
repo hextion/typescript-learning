@@ -20,6 +20,7 @@
     "test:watch": "npm run test -- --watch"
   },
   "author": "Salavat Gizatov <100ishundred@gmail.com> (https://github.com/hextion)",
+  "homepage": "https://github.com/hextion/typescript-learning",
   "license": "MIT",
   "repository": {
     "type": "git",
