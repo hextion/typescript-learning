@@ -8,8 +8,8 @@ describe("makeTree", () => {
         { key: 2, parentKey: 1 },
       ],
       {
-        keySelector: (item) => item.key,
-        parentKeySelector: (item) => item.parentKey,
+        nodeKeySelector: (item) => item.key,
+        parentNodeKeySelector: (item) => item.parentKey,
       }
     );
     expect(tree).toMatchObject([

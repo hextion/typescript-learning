@@ -3,21 +3,27 @@ export interface Parental<T> {
   children?: Array<Parental<T>>;
 }
 
-export interface Options<K, V> {
-  keySelector(item: V): K;
-  parentKeySelector(item: V): K;
+type BaseNode = Record<string, unknown>;
+
+export interface NodeKeySelector<K, V extends BaseNode> {
+  (node: V): K;
 }
 
-export function makeTree<K, V extends Record<string, unknown>>(
+export interface Options<K, V extends BaseNode> {
+  nodeKeySelector: NodeKeySelector<K, V>;
+  parentNodeKeySelector: NodeKeySelector<K, V>;
+}
+
+export function makeTree<K, V extends BaseNode>(
   source: Array<V>,
-  { keySelector, parentKeySelector }: Options<K, V>
+  { nodeKeySelector, parentNodeKeySelector }: Options<K, V>
 ): Array<Parental<V>> {
   return source
     .map((item) => ({ value: item }))
     .map((node, _, arr) => {
-      const key = keySelector(node.value);
-      const children = arr.filter((node) => Object.is(parentKeySelector(node.value), key));
+      const key = nodeKeySelector(node.value);
+      const children = arr.filter((node) => Object.is(parentNodeKeySelector(node.value), key));
       return children.length > 0 ? Object.assign(node, { children }) : node;
     })
-    .filter(({ value }) => Object.is(parentKeySelector(value), null));
+    .filter(({ value }) => Object.is(parentNodeKeySelector(value), null));
 }
