@@ -2,7 +2,18 @@
   "name": "typescript-learning",
   "version": "0.0.1",
   "description": "typescript learning",
+  "homepage": "https://github.com/hextion/typescript-learning",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hextion/typescript-learning.git"
+  },
+  "license": "MIT",
+  "author": "Salavat Gizatov <100ishundred@gmail.com> (https://github.com/hextion)",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
+    "prebuild": "npm run clear-build",
     "build": "npm run build-cjs && npm run build-es && npm run build-types",
     "build-cjs": "tsc --project tsconfig.json --module commonjs --outDir lib",
     "build-es": "tsc --project tsconfig.json --outDir es",
@@ -13,22 +24,11 @@
     "format-fix": "npm run format -- --write",
     "lint": "eslint --ext .ts --max-warnings 0 src test",
     "lint-fix": "npm run lint -- --fix",
-    "prebuild": "npm run clear-build",
     "pretest": "npm run check-types && npm run build",
     "test": "jest",
     "test-coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "Salavat Gizatov <100ishundred@gmail.com> (https://github.com/hextion)",
-  "homepage": "https://github.com/hextion/typescript-learning",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hextion/typescript-learning.git"
-  },
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "types/index.d.ts",
   "devDependencies": {
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
