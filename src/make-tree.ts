@@ -9,10 +9,7 @@ export interface NodeKeySelector<K, V extends BaseNode> {
   (node: V): K;
 }
 
-export interface Options<K, V extends BaseNode> {
-  nodeKeySelector: NodeKeySelector<K, V>;
-  parentNodeKeySelector: NodeKeySelector<K, V>;
-}
+export type Options<K, V extends BaseNode> = Record<"nodeKeySelector" | "parentNodeKeySelector", NodeKeySelector<K, V>>;
 
 export function makeTree<K, V extends BaseNode>(
   source: Array<V>,
