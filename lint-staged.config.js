@@ -1,4 +1,4 @@
-const prettier = "prettier --list-different";
+const prettier = "prettier --check";
 const eslint = "eslint --max-warnings 0";
 
 /**
