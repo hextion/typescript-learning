@@ -15,7 +15,7 @@ export function makeTree<K, V>(
   withParentNodeKey: ReturnType<typeof parentNodeKeySelector>
 ): Array<Parental<V>> {
   return source
-    .map((item) => ({ value: item }))
+    .map((value) => ({ value }))
     .map((node, _, arr) => {
       const key = nodeKeySelector(node.value);
       const children = arr.filter((node) => Object.is(parentNodeKeySelector(node.value), key));
