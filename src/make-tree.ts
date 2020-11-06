@@ -3,15 +3,13 @@ export interface Parental<T> {
   children?: Array<Parental<T>>;
 }
 
-type BaseNode = Record<string, unknown>;
-
-export interface NodeKeySelector<K, V extends BaseNode> {
+export interface NodeKeySelector<K, V> {
   (node: V): K;
 }
 
-export type Options<K, V extends BaseNode> = Record<"nodeKeySelector" | "parentNodeKeySelector", NodeKeySelector<K, V>>;
+export type Options<K, V> = Record<"nodeKeySelector" | "parentNodeKeySelector", NodeKeySelector<K, V>>;
 
-export function makeTree<K, V extends BaseNode>(
+export function makeTree<K, V>(
   source: Array<V>,
   { nodeKeySelector, parentNodeKeySelector }: Options<K, V>,
   withParentNodeKey: ReturnType<typeof parentNodeKeySelector>
